@@ -1,0 +1,1 @@
+"""Anki service application package."""

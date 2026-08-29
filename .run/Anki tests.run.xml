@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Anki tests" type="tests" factoryName="py.test">
+    <module name="anki-service" />
+    <option name="INTERPRETER_OPTIONS" value="" />
+    <option name="PARENT_ENVS" value="true" />
+    <option name="SDK_HOME" value="" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/anki-service" />
+    <option name="IS_MODULE_SDK" value="true" />
+    <option name="ADD_CONTENT_ROOTS" value="true" />
+    <option name="ADD_SOURCE_ROOTS" value="true" />
+    <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+    <option name="_new_additionalArguments" value="" />
+    <option name="_new_target" value="$PROJECT_DIR$/anki-service/tests" />
+    <option name="_new_targetType" value="PATH" />
+    <method v="2" />
+  </configuration>
+</component>
