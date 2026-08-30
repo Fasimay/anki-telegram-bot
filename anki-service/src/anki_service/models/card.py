@@ -22,4 +22,4 @@ class CardAnswerResponse(BaseModel):
     word: str
     sentence: str | None = None
     meaning: str
-    ratings: list[RatingOptionResponse]
+    rating: list[RatingOptionResponse]

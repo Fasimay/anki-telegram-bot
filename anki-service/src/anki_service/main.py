@@ -6,7 +6,7 @@ from anki_service.api.reviews import router as reviews_router
 
 
 def create_app() -> FastAPI:
-    return FastAPI(
+    app = FastAPI(
         title="Anki Service",
         description="HTTP API for working with Anki data.",
         version="0.1.0",

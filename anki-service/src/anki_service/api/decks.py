@@ -10,8 +10,11 @@ router = APIRouter(
 @router.get("", response_model=list[DeckResponse])
 def get_decks() -> list[DeckResponse]:
     return [
-        {
-            "deckId": 1,
-            "deckName": "eng",
-        },
+        DeckResponse(
+            deck_id=1,
+            deck_name="eng",
+            new_count=10,
+            learning_count=2,
+            review_count=34,
+        )
     ]
