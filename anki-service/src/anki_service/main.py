@@ -1,7 +1,8 @@
 import os
 from pathlib import Path
-
 from fastapi import FastAPI
+from anki_service.api.decks import router as decks_router
+from anki_service.api.reviews import router as reviews_router
 
 
 def create_app() -> FastAPI:
@@ -10,20 +11,19 @@ def create_app() -> FastAPI:
         description="HTTP API for working with Anki data.",
         version="0.1.0",
     )
-
+    app.include_router(decks_router)
+    app.include_router(reviews_router)
+    return app
 
 app = create_app()
-
 
 @app.get("/", tags=["system"])
 def root() -> dict[str, str]:
     return {"service": "anki-service", "docs": "/docs"}
 
-
 @app.get("/health", tags=["system"])
 def health() -> dict[str, str]:
     return {"status": "UP"}
-
 
 def run() -> None:
     """Run the development server through the installed console command."""
