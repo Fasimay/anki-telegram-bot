@@ -1,15 +1,32 @@
+from contextlib import asynccontextmanager
+
 import os
 from pathlib import Path
 from fastapi import FastAPI
 from anki_service.api.decks import router as decks_router
 from anki_service.api.reviews import router as reviews_router
+from anki_service.anki.collection_manager import CollectionManager
+from dotenv import load_dotenv
 
+load_dotenv()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    collections_path = Path(os.environ["ANKI_COLLECTION_PATH"])
+    manager = CollectionManager(collections_path)
+    manager.open()
+    app.state.collection_manager = manager
+    try:
+        yield
+    finally:
+        manager.close()
 
 def create_app() -> FastAPI:
     app = FastAPI(
         title="Anki Service",
         description="HTTP API for working with Anki data.",
         version="0.1.0",
+        lifespan=lifespan
     )
     app.include_router(decks_router)
     app.include_router(reviews_router)
